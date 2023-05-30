@@ -15,15 +15,22 @@ const Home = () => {
         .then(data => setPopularMovies(data.results))
     }, [])
 
+    if(popularMovies.length < 1) {
+        return <></>
+    }
+
     return (
         <>
             <div className="poster">
                 <Carousel
                     showThumbs={false}
                     autoPlay={true}
-                    transitionTime={3}
+                    transitionTime={500}
+                    interval={3000}
                     infiniteLoop={true}
                     showStatus={false}
+                    autoFocus={true}
+                    stopOnHover={false}
                 >
                     {
                         popularMovies.map(movie => (
